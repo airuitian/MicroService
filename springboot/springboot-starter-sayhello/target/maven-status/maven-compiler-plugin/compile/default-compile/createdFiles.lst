@@ -1,0 +1,3 @@
+org/newit/springboot/sayhello/HelloServiceProperties.class
+org/newit/springboot/sayhello/HelloService.class
+org/newit/springboot/sayhello/HelloServiceAutoConfiguration.class
