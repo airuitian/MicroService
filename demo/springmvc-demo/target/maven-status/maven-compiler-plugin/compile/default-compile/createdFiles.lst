@@ -1,0 +1,4 @@
+org/newit/microservice/springmvc/MyMvcConfig.class
+org/newit/microservice/springmvc/MyTime.class
+org/newit/microservice/springmvc/HelloController.class
+org/newit/microservice/springmvc/WebInitializer.class
