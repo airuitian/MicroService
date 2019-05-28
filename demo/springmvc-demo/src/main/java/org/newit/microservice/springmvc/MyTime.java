@@ -6,7 +6,7 @@ public class MyTime {
     public Long getCurrentTime() {
         return currentTime;
     }
-    // test
+    
     public void setCurrentTime(Long currentTime) {
         this.currentTime = currentTime;
     }
