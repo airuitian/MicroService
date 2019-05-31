@@ -13,20 +13,27 @@
   <div>
     <label>myUserId</label>
     <input type="text" id="myUserId" />
+  </div>
+  <div>
     <label>toUserId</label>
     <input type="text" id="toUserId" />
+  </div>
+  <div>
     <label>message</label>
     <input type="text" id="message" />
-    <button id="send" onclick="send();">发送</button>
+  </div>
+  <div>
+    <button id="send" onclick="send();">单独发送</button>
+    <button id="broadcast" onclick="broadcast();">广播</button>
+  </div>
+  <div>
     <p id="response"></p>
   </div>
 </div>
 
-<script src="https://cdn.bootcss.com/stomp.js/2.3.3/stomp.min.js"></script>
-<script src="https://cdn.bootcss.com/sockjs-client/1.3.0/sockjs.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js"></script>
 <script type="text/javascript">
-  var ws = null;
+
 
   function setConnected(connected){
     if(connected){
@@ -37,7 +44,7 @@
       $("#connect").prop("disabled",false);
     }
   }
-
+  var ws = null;
   function connect(){
     var myUserId = $("#myUserId").val();
     ws = new WebSocket("ws://localhost:8080/sendMessage?myUserId=" + myUserId);
@@ -72,6 +79,16 @@
     ws.send(JSON.stringify({
       fromUserId: fromUserId,
       toUserId: toUserId,
+      message: message
+    }));
+  }
+
+  function broadcast() {
+    var fromUserId = $("#myUserId").val();
+    var message = $("#message").val();
+    ws.send(JSON.stringify({
+      fromUserId: fromUserId,
+      toUserId: 0,
       message: message
     }));
   }

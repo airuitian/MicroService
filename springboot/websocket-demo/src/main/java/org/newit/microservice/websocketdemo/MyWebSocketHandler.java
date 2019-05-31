@@ -1,5 +1,6 @@
 package org.newit.microservice.websocketdemo;
 
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Objects;
@@ -39,7 +40,16 @@ public class MyWebSocketHandler extends TextWebSocketHandler {
         long fromUserId = json.getLongValue("fromUserId");
         long toUserId = json.getLongValue("toUserId");
         String userMessage = json.getString("message");
-        if (userSessionMap.containsKey(toUserId)) {
+        if (toUserId == 0) {
+            userSessionMap.forEach((uid, webSocketSession) -> {
+                try {
+                    webSocketSession.sendMessage(
+                            new TextMessage("from " + fromUserId + "broadcast message:" + userMessage));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+        } else if (userSessionMap.containsKey(toUserId)) {
             WebSocketSession toSession = userSessionMap.get(toUserId);
             toSession.sendMessage(new TextMessage("from " + fromUserId + " said: " + userMessage));
         }
