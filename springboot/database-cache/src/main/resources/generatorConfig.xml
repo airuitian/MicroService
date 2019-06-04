@@ -16,21 +16,21 @@
     </javaTypeResolver>
 
     <javaModelGenerator targetPackage="org.newit.microservice.databasedemo.model"
-                        targetProject="/Users/admin/airuitian/MicroService/springboot/database-demo/src/main/java">
+                        targetProject="/Users/admin/airuitian/MicroService/springboot/database-cache/src/main/java">
       <property name="enableSubPackages" value="true" />
       <property name="trimStrings" value="true" />
     </javaModelGenerator>
 
-    <sqlMapGenerator targetPackage="mapper"  targetProject="/Users/admin/airuitian/MicroService/springboot/database-demo/src/main/resources">
+    <sqlMapGenerator targetPackage="mapper"  targetProject="/Users/admin/airuitian/MicroService/springboot/database-cache/src/main/resources">
       <property name="enableSubPackages" value="true" />
     </sqlMapGenerator>
 
     <javaClientGenerator type="XMLMAPPER" targetPackage="org.newit.microservice.databasedemo.dao"
-                         targetProject="/Users/admin/airuitian/MicroService/springboot/database-demo/src/main/java">
+                         targetProject="/Users/admin/airuitian/MicroService/springboot/database-cache/src/main/java">
       <property name="enableSubPackages" value="true" />
     </javaClientGenerator>
 
-    <table tableName="item"
-           domainObjectName="Item"></table>
+    <table tableName="user"
+           domainObjectName="User"></table>
   </context>
 </generatorConfiguration>
