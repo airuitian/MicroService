@@ -16,17 +16,17 @@
     </javaTypeResolver>
 
     <javaModelGenerator targetPackage="org.newit.microservice.ebusiness.model"
-                        targetProject="${basedir}/src/main/java">
+                        targetProject="src/main/java">
       <property name="enableSubPackages" value="true" />
       <property name="trimStrings" value="true" />
     </javaModelGenerator>
 
-    <sqlMapGenerator targetPackage="mapper"  targetProject="${basedir}/src/main/resources">
+    <sqlMapGenerator targetPackage="mapper"  targetProject="src/main/resources">
       <property name="enableSubPackages" value="true" />
     </sqlMapGenerator>
 
     <javaClientGenerator type="XMLMAPPER" targetPackage="org.newit.microservice.ebusiness.dao"
-                         targetProject="${basedir}/src/main/java">
+                         targetProject="src/main/java">
       <property name="enableSubPackages" value="true" />
     </javaClientGenerator>
 
