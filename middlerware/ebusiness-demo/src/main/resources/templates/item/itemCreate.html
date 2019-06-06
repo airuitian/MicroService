@@ -1,20 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Create Item</title>
-</head>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common::commonHeader('Create Item')"></head>
 <body>
+<div th:include="common::commonNav"></div>
 名称：
-  <input type="text" id="name" />
+<input type="text" id="name" /><br/>
 描述：
-<input type="text" id="description" />
+<input type="text" id="description" /><br/>
 价格：
-<input type="number" id="price" />
+<input type="number" id="price" /><br/>
 数量：
-<input type="number" id="quantity" />
+<input type="number" id="quantity" /><br/>
 <button id="register">发布商品</button>
 
+<div th:include="common::commonFooter"></div>
 </body>
 <script
 src="https://code.jquery.com/jquery-2.2.4.min.js"

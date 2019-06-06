@@ -43,17 +43,19 @@ public class OrderController extends BaseController{
         return "order/orderDetail";
     }
 
-    @RequestMapping("/order/list")
-    public String orderList(@RequestParam(value = "buyerId", required = false, defaultValue = "0") long buyerId,
-                            @RequestParam(value = "sellerId", required = false, defaultValue = "0")
-                                    long sellerId,
-                            Model model) {
-        List<Order> orderList = Lists.newArrayList();
-        if (buyerId > 0) {
-            orderList = orderService.getOrderListByBuyerId(buyerId);
-        } else if (sellerId > 0) {
-            orderList = orderService.getOrderListBySellerId(sellerId);
-        }
+    @RequestMapping("/order/buyerList")
+    public String buyerOrderList(Model model) {
+        List<Order> orderList = orderService.getOrderListByBuyerId(getLoginUser().getId());
+        List<OrderView> orderViewList = Lists.newArrayList();
+        orderList.forEach(order -> orderViewList.add(orderService.getOrderView(order)));
+        model.addAttribute("orderViewList", orderViewList);
+        return "order/orderList";
+    }
+
+
+    @RequestMapping("/order/sellerList")
+    public String sellerOrderList(Model model) {
+        List<Order> orderList = orderService.getOrderListBySellerId(getLoginUser().getId());
         List<OrderView> orderViewList = Lists.newArrayList();
         orderList.forEach(order -> orderViewList.add(orderService.getOrderView(order)));
         model.addAttribute("orderViewList", orderViewList);

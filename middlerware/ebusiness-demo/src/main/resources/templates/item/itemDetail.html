@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-  <meta charset="UTF-8">
-  <title>Item Detail</title>
-</head>
+<head th:replace="common::commonHeader('Item Detail')"></head>
 <body>
+<div th:include="common::commonNav"></div>
 <input type="hidden" th:value="${item.id}" id="itemId"/>
 
 item name:<span th:text="${item.name}"></span><br/>
 item description:<span th:text="${item.description}"></span><br/>
 item price:<span th:text="${item.price}"></span><br/>
 <button id="purchase">购买</button>
+<div th:include="common::commonFooter"></div>
 </body>
 <script
   src="https://code.jquery.com/jquery-2.2.4.min.js"

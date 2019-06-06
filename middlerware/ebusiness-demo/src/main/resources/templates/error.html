@@ -1,10 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>ERROR</title>
-</head>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="common::commonHeader('ERROR')"></head>
 <body>
-ERROR
+<div th:include="common::commonNav"></div>
+ERROR 500
+<div th:include="common::commonFooter"></div>
 </body>
 </html>
