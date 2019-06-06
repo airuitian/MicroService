@@ -4,7 +4,14 @@
   "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
-  <context id="DB2Tables" targetRuntime="MyBatis3">
+  <context id="mysql" targetRuntime="MyBatis3">
+    <!--autoDelimitKeywords，当表名或者字段名为SQL关键字的时候，可以设置该属性为true，MBG会自动给表名或字段名添加分隔符-->
+    <property name="autoDelimitKeywords" value="true"/>
+    <!--beginningDelimiter和endingDelimiter的默认值为双引号(")，在Mysql中不能这么写，所以还要将这两个默认值改为反单引号(`)-->
+    <property name="beginningDelimiter" value="`"/>
+    <property name="endingDelimiter" value="`"/>
+
+
     <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                     connectionURL="jdbc:mysql://127.0.0.1:3306/newit"
                     userId="root"
@@ -31,7 +38,8 @@
     </javaClientGenerator>
 
     <table tableName="user" domainObjectName="User"></table>
-    <table tableName="order" domainObjectName="Order"></table>
+    <table tableName="order" domainObjectName="Order" delimitIdentifiers="true">
+    </table>
     <table tableName="item" domainObjectName="Item"></table>
   </context>
 </generatorConfiguration>

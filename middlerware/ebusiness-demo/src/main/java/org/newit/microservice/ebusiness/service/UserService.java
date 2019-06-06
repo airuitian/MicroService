@@ -14,4 +14,12 @@ public class UserService {
     public void register(User user) {
         userRepository.insert(user);
     }
+
+    public User getUserByName(String username) {
+        return userRepository.getUserByName(username);
+    }
+
+    public User getUserById(Long userId) {
+        return userRepository.getUserById(userId);
+    }
 }

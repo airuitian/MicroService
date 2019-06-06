@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Order List</title>
+</head>
+<body>
+<h2>Order List</h2>
+<table>
+  <thead>
+    <tr>
+      <td>Order Id</td>
+      <td>Buyer name</td>
+      <td>Seller name</td>
+      <td>Item name</td>
+      <td>Item description</td>
+      <td>price</td>
+      <td>Order time</td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr th:each="orderView:${orderViewList}">
+      <td >
+        <a th:href="@{'/order/detail/' + ${orderView.order.id}}" th:text="${orderView.order.id}"></a>
+      </td>
+      <td th:text="${orderView.buyer.name}"></td>
+      <td th:text="${orderView.seller.name}"></td>
+      <td th:text="${orderView.item.name}"></td>
+      <td th:text="${orderView.item.description}"></td>
+      <td th:text="${orderView.item.price}"></td>
+      <td th:text="${orderView.order.createdTime}"></td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>

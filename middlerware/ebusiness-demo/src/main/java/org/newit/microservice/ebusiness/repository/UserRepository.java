@@ -33,4 +33,14 @@ public class UserRepository {
         }
         return null;
     }
+
+    public User getUserById(Long userId) {
+        UserExample example = new UserExample();
+        example.createCriteria().andIdEqualTo(userId);
+        List<User> users = userMapper.selectByExample(example);
+        if(CollectionUtils.isNotEmpty(users)){
+            return users.get(0);
+        }
+        return null;
+    }
 }

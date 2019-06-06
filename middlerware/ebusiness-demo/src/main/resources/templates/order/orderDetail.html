@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Item Detail</title>
+</head>
+<body>
+orderId:<span th:text="${orderView.order.id}"></span><br/>
+buyer name:<span th:text="${orderView.buyer.name}"></span><br/>
+seller name:<span th:text="${orderView.seller.name}"></span><br/>
+item name:<span th:text="${orderView.item.name}"></span><br/>
+item description:<span th:text="${orderView.item.description}"></span><br/>
+item price:<span th:text="${orderView.item.price}"></span><br/>
+
+</body>
+</html>

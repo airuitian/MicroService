@@ -8,10 +8,25 @@
 <h2>Item All List</h2>
 <table>
   <thead>
-
+    <tr>
+      <td>Id</td>
+      <td>name</td>
+      <td>description</td>
+      <td>price</td>
+      <td>seller</td>
+    </tr>
   </thead>
-
+  <tbody>
+    <tr th:each="item:${itemList}">
+      <td >
+        <a th:href="@{'/item/detail/' + ${item.id}}" th:text="${item.id}"></a>
+      </td>
+      <td th:text="${item.name}"></td>
+      <td th:text="${item.description}"></td>
+      <td th:text="${item.price}"></td>
+      <td th:text="${item.sellerId}"></td>
+    </tr>
+  </tbody>
 </table>
-item name:<span th:text="${item.name}"></span>
 </body>
 </html>

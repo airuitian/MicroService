@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alibaba.fastjson.JSONObject;
 
 @Controller
-public class ItemController {
+public class ItemController extends BaseController{
 
     @Autowired
     private ItemService itemService;
@@ -28,6 +28,7 @@ public class ItemController {
     @RequestMapping("/item/publish")
     @ResponseBody
     public JSONObject itemPublish(@RequestBody Item item) {
+        item.setSellerId(getLoginUser().getId());
         itemService.insert(item);
         JSONObject result = new JSONObject();
         result.put("success", true);
