@@ -2,36 +2,29 @@ package org.newit.microservice.ebusiness.repository;
 
 import java.util.List;
 
-import org.apache.commons.collections4.CollectionUtils;
-import org.newit.microservice.ebusiness.dao.ItemMapper;
 import org.newit.microservice.ebusiness.model.Item;
-import org.newit.microservice.ebusiness.model.ItemExample;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.client.RestTemplate;
+
+import com.alibaba.fastjson.JSONObject;
 
 @Repository
 public class ItemRepository {
 
     @Autowired
-    private ItemMapper itemMapper;
+    private RestTemplate restTemplate;
 
     public Item getItemById(long itemId) {
-        ItemExample example = new ItemExample();
-        example.createCriteria().andIdEqualTo(itemId);
-        List<Item> items = itemMapper.selectByExample(example);
-        if (CollectionUtils.isNotEmpty(items)) {
-            return items.get(0);
-        }
-        return null;
+        Item item = restTemplate.getForObject("http://localhost:6101/item/" + itemId, Item.class);
+        return item;
     }
 
     public void insert(Item item) {
-        itemMapper.insert(item);
+        restTemplate.postForObject("http://localhost:6101/item/insert", item, JSONObject.class);
     }
 
     public List<Item> getItemAllList() {
-        ItemExample example = new ItemExample();
-        example.createCriteria();
-        return itemMapper.selectByExample(example);
+        return restTemplate.getForObject("http://localhost:6101/item/allList", List.class);
     }
 }
