@@ -24,6 +24,7 @@ public class Application {
         RedisSerializer stringSerializer = redisTemplate.getStringSerializer();
         redisTemplate.setKeySerializer(stringSerializer);
         redisTemplate.setHashKeySerializer(stringSerializer);
+        redisTemplate.setValueSerializer(stringSerializer);
     }
 
     public static void main(String[] args){

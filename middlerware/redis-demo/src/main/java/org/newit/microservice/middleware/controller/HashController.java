@@ -15,7 +15,8 @@ public class HashController {
 
     @RequestMapping("/hash/hashPut")
     @ResponseBody
-    public String hashPut(@RequestParam("hashKey") String hashKey, @RequestParam("hashValue") String hashValue){
+    public String hashPut(@RequestParam("hashKey") String hashKey,
+                          @RequestParam("hashValue") String hashValue){
         redisTemplate.opsForHash().put("config", hashKey, hashValue);
         return "success";
     }
