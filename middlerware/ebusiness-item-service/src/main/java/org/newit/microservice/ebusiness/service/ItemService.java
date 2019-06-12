@@ -6,7 +6,6 @@ import org.newit.microservice.ebusiness.model.Item;
 import org.newit.microservice.ebusiness.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 @Service
 public class ItemService {
